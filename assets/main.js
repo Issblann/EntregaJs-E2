@@ -61,14 +61,6 @@ const Pizzas = [
   },
 ];
 
-// const capturaInput = (numberValue) => {
-//   numberValue = numberInput.value.trim();
-//   // container.textContent = `Este es el resultado ${numberValue}`;
-//   return numberValue;
-// };
-
-// console.log(capturaInput());
-
 const agarraPizza = () => {
   const numberValue = numberInput.value.trim();
 
@@ -93,33 +85,6 @@ const agarraPizza = () => {
 };
 
 const isEmpty = (value) => !value.length;
-
-// const funcionIdPizzas = () => {
-//   const findIdPizzas = Pizzas.find((pizza) => {
-//     return pizza.id == numberValue;
-//   });
-
-//   // filterIdPizzas.forEach((pizza) => {
-//   //   pizza.id;
-//   //   console.log(pizza.id);
-//   // });
-//   return findIdPizzas;
-// };
-
-// funcionIdPizzas(numberValue);
-
-// const funcionNamePizzas = () => {
-//   const findNamePizzas = Pizzas.find((pizza) => {
-//     return pizza.nombre;
-//   });
-//   // findNamePizzas.forEach((pizza) => {
-//   //   pizza.nombre;
-//   //   console.log(pizza.nombre);
-//   // });
-//   return findNamePizzas;
-// };
-
-// funcionNamePizzas();
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
