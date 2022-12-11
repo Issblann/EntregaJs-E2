@@ -5,35 +5,35 @@ const container = document.getElementById("containerCards");
 
 const Pizzas = [
   {
-    nombre: "Hawaiana",
+    nombre: "Pizza Hawaiana",
     id: 1,
     ingredientes: ["Piña", "Jamon", "Queso"],
-    precio: 566,
+    precio: "3,30",
   },
 
   {
-    nombre: "Jamon y Queso",
+    nombre: "Pizza Jamon y Queso",
     id: 2,
     ingredientes: ["Jamon", "Queso"],
-    precio: 566,
+    precio: "3,30",
   },
 
   {
-    nombre: "Mexicana",
+    nombre: "Pizza Mexicana",
     id: 3,
     ingredientes: ["Carne desmechada", "Nachos", "Queso"],
-    precio: 727,
+    precio: "4,50",
   },
 
   {
-    nombre: "Samba",
+    nombre: "Pizza Samba",
     id: 4,
     ingredientes: ["Maduro", "Maiz", "Tocineta", "Jamon", "Queso"],
-    precio: 727,
+    precio: "4,50",
   },
 
   {
-    nombre: "Vegetariana",
+    nombre: "Pizza Vegetariana",
     id: 5,
     ingredientes: [
       "Tomate",
@@ -43,21 +43,21 @@ const Pizzas = [
       "Champiñon",
       "Queso",
     ],
-    precio: 889,
+    precio: "5,30",
   },
 
   {
-    nombre: "Napolitana",
+    nombre: "Pizza Napolitana",
     id: 6,
     ingredientes: ["Tomate", "Oregano", "Queso"],
-    precio: 889,
+    precio: "5,30",
   },
 
   {
-    nombre: "Atlantias Americana",
+    nombre: "Pizza Americana",
     id: 7,
     ingredientes: ["Salchicha", "Jamon", "Tocineta", "Queso"],
-    precio: 889,
+    precio: "5,30",
   },
 ];
 
@@ -68,13 +68,13 @@ const agarraPizza = () => {
     return pizza.id == numberValue;
   });
   if (isEmpty(numberValue)) {
-    container.classList.remove("hidden");
-    container.innerHTML = "<h3> Ingresa algun ID </h3>";
+    container.classList.add("hidden");
+    showError(numberInput, "Debe ingresar algún número.");
   } else if (!findPizzas) {
-    container.innerHTML = "<h3> Ingresa algun ID valido </h3>";
-    container.classList.remove("hidden");
-  }
-  if (findPizzas) {
+    container.classList.add("hidden");
+    showError(numberInput, "Debe ingresar un número entre 1 y 7.");
+  } else if (findPizzas) {
+    removeError(numberInput);
     container.classList.remove("hidden");
     container.innerHTML = `<div>
     <h2 class="titulo-pizza">${findPizzas.nombre}</h2>
@@ -86,6 +86,19 @@ const agarraPizza = () => {
 
 const isEmpty = (value) => !value.length;
 
+const showError = (input, message) => {
+  const div = input.parentElement;
+  div.classList.add("error");
+  const error = div.querySelector("small");
+  error.textContent = message;
+};
+
+const removeError = (input) => {
+  const div = input.parentElement;
+  div.classList.remove("error");
+  const error = div.querySelector("small");
+  error.textContent = "";
+};
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   agarraPizza();
